@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Inscription - TP2</title>
+    <style>
+        body { font-family: sans-serif; background-color: #f4f4f4; padding: 20px; }
+        form { background: white; padding: 20px; border-radius: 8px; max-width: 600px; margin: auto; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        fieldset { border: 1px solid #ccc; margin-bottom: 20px; padding: 15px; border-radius: 5px; }
+        legend { font-weight: bold; color: #333; }
+        div { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; }
+        input[type="text"], input[type="email"], input[type="tel"], input[type="password"], input[type="date"], select, textarea {
+            width: 100%; padding: 8px; box-sizing: border-box;
+        }
+        .radio-group, .check-group { display: flex; gap: 10px; align-items: center; }
+        button { background: #28a745; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; width: 100%; }
+    </style>
+</head>
+<body>
+
+    <form action="#" method="POST">
+        <h2>Formulaire d'Inscription</h2>
+
+        <fieldset>
+            <legend>Informations personnelles</legend>
+            <div>
+                <label for="nom">Nom :</label>
+                <input type="text" id="nom" name="nom" required autocomplete="family-name">
+            </div>
+            <div>
+                <label for="prenom">Prénom :</label>
+                <input type="text" id="prenom" name="prenom" required autocomplete="given-name">
+            </div>
+            <div>
+                <label for="email">Email :</label>
+                <input type="email" id="email" name="email" required autocomplete="email" placeholder="exemple@mail.com">
+            </div>
+            <div>
+                <label for="tel">Téléphone (Format FR) :</label>
+                <input type="tel" id="tel" name="tel" pattern="0[1-9][0-9]{8}" required placeholder="0612345678" title="Veuillez entrer un numéro français valide (10 chiffres)">
+            </div>
+            <div>
+                <label for="naissance">Date de naissance (18 ans min) :</label>
+                <input type="date" id="naissance" name="naissance" max="2008-01-01" required>
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend>Sécurité</legend>
+            <div>
+                <label for="mdp">Mot de passe :</label>
+                <input type="password" id="mdp" name="mdp" pattern="(?=.*\d)(?=.*[A-Z]).{8,}" 
+                       title="Doit contenir au moins 8 caractères, une majuscule et un chiffre" required autocomplete="new-password">
+            </div>
+            <div>
+                <label for="conf_mdp">Confirmation du mot de passe :</label>
+                <input type="password" id="conf_mdp" name="conf_mdp" required>
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend>Détails du profil</legend>
+            <div>
+                <label>Genre :</label>
+                <span class="radio-group">
+                    <input type="radio" id="h" name="genre" value="H" required> <label for="h">Homme</label>
+                    <input type="radio" id="f" name="genre" value="F"> <label for="f">Femme</label>
+                </span>
+            </div>
+            <div>
+                <label for="pays">Pays :</label>
+                <input list="liste-pays" id="pays" name="pays" required placeholder="Choisir ou taper...">
+                <datalist id="liste-pays">
+                    <option value="France">
+                    <option value="Belgique">
+                    <option value="Suisse">
+                    <option value="Canada">
+                    <option value="Maroc">
+                </datalist>
+            </div>
+            <div>
+                <label>Centres d'intérêt :</label>
+                <span class="check-group">
+                    <input type="checkbox" id="sport" name="interet" value="sport"> <label for="sport">Sport</label>
+                    <input type="checkbox" id="musique" name="interet" value="musique"> <label for="musique">Musique</label>
+                    <input type="checkbox" id="code" name="interet" value="code"> <label for="code">Code</label>
+                </span>
+            </div>
+            <div>
+                <label for="bio">Biographie (max 150 caractères) :</label>
+                <textarea id="bio" name="bio" maxlength="150" rows="3" placeholder="Parlez-nous de vous..."></textarea>
+            </div>
+            <div>
+                <label for="photo">Photo de profil :</label>
+                <input type="file" id="photo" name="photo" accept="image/*">
+            </div>
+        </fieldset>
+
+        <div>
+            <input type="checkbox" id="cgu" name="cgu" required>
+            <label for="cgu" style="display: inline;">J'accepte les conditions générales d'utilisation</label>
+        </div>
+
+        <button type="submit">S'inscrire gratuitement</button>
+    </form>
+
+</body>
+</html>
